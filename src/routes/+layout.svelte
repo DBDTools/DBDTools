@@ -19,7 +19,7 @@
     
 </script>
 
-<div class="h-screen w-screen bg-cover" style={bgImage}>
+<div class="h-screen w-screen bg-cover bg-black" style={bgImage}>
     <slot />
 </div>
 
