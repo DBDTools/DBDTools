@@ -1,9 +1,21 @@
 <script>
     let linkToCopy = ""
+    $: linkToCopyCode = linkToCopy.substring(linkToCopy.lastIndexOf('/') + 1) /* Diese Logik vielleicht in linkGenerator.ts abbilden */
+    
     let letOthersChooseMaps = true
 
     import Icon from '@iconify/svelte';
     import confirmIcon from '@iconify/icons-line-md/confirm-circle';
+    import { generateNewLink } from '../../scripts/linkGenerator'
+
+    function generateLink() {        
+        linkToCopy = generateNewLink()
+        copyLink()
+    }
+
+    function copyLink() {
+        navigator.clipboard.writeText(linkToCopy)
+    }
 </script>
 
 <div class="flex flex-col justify-center h-full w-full place-items-center gap-5">
@@ -19,15 +31,15 @@
                     <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Let others choose Maps</span>
                 </label>
             </div>
-            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            <button on:click={generateLink} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                 Generate Link
             </button>
         </div>
     </div>
     {#if linkToCopy != ""}
         <div class="bg-box flex flex-col gap-5">
-            <input type="text" class="bg-transparent w-full text-white text-xl border-transparent" bind:value={linkToCopy}>
-            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            <input type="text" class="bg-transparent w-full text-white text-xl border-transparent" bind:value={linkToCopyCode}>
+            <button on:click={copyLink} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                 Copy
             </button>
             <div class="flex gap-3">
