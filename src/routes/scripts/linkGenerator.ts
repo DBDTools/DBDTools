@@ -1,6 +1,6 @@
 import { dev } from '$app/environment';
 
-import type { LinkSession } from "../types/linkSesson";
+import type { LinkSession } from "../types/linkSession";
 import { ServiceType } from "../types/serviceType";
 
 export function generateNewLink() {

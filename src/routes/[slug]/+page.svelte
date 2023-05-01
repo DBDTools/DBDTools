@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { LinkSession } from '../types/linkSesson';
+    import type { LinkSession } from '../types/linkSession';
     import type { PageData } from './$types';
     import { ServiceType } from '../types/serviceType';
     import Numerizer from "../components/numerizer/numerizer.svelte"

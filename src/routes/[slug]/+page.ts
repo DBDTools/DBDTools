@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import type { LinkSession } from '../types/linkSesson';
+import type { LinkSession } from '../types/linkSession';
 import { ServiceType } from '../types/serviceType';
 import type { PageLoad } from './$types';
 
